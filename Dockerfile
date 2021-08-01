@@ -1,7 +1,10 @@
 FROM debian:buster-slim as downloader
+ENV DEBIAN_FRONTEND noninteractive
 
 # install dependencies
-RUN apt update && apt upgrade -y && apt install -y wget curl jq bzip2
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y wget curl jq bzip2
 
 # Downlad and extract latest ts3 server binary
 RUN wget $(curl -Ls 'https://www.teamspeak.com/versions/server.json' | jq -r '.linux.x86.mirrors | values[]')
@@ -11,7 +14,7 @@ RUN touch .ts3server_license_accepted
 
 # ****************************************************************
 # run teamspeak on the base box86 image
-FROM anujdatar/box86-docker:buster-slim
+FROM anujdatar/box86-docker:latest
 
 COPY --from=downloader /teamspeak3-server_linux_x86 /ts3-server
 WORKDIR /ts3-server
