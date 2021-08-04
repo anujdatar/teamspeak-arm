@@ -14,7 +14,7 @@ RUN touch .ts3server_license_accepted
 
 # ****************************************************************
 # run teamspeak on the base box86 image
-FROM anujdatar/box86-docker:latest
+FROM anujdatar/box86:latest
 
 COPY --from=downloader /teamspeak3-server_linux_x86 /ts3-server
 WORKDIR /ts3-server
