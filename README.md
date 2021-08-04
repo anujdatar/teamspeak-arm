@@ -1,5 +1,7 @@
 # teamspeak-arm
-TeamSpeak3 server running in a docker container on an ARM device
+TeamSpeak3 server running in a docker container on an ARM device. Uses
+[anujdatar/box860](https://hub.docker.com/repository/docker/anujdatar/box86) as
+the base image.
 
 ## Running the server
 ```bash
